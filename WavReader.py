@@ -15,7 +15,7 @@ def padpad(data, iterations = 1): #This function is used when the array of data 
         diff = shift_bit_length(length + 1) - length
         print(diff)
         if length % 2 == 0:
-            pad_width = diff / 2
+            pad_width = int(diff / 2)
         else:
             # need an uneven padding for odd-number lengths
             left_pad = int(diff / 2)
@@ -30,9 +30,8 @@ def plotWaveFile(array_of_data):
     plt.plot(np.abs(array_of_data[:(d - 1)]), 'r') #goes through each abs value of the frequencies and plots them
     plt.show()
 
-
-
 def readWavFile(filename):
+    plotSoundFile(filename)
     fs, data = wavfile.read(filename) # load the data
     a = data.T[0:data.size] # this is a two channel soundtrack, I get the first track
     b=[(ele/2**8.)*2-1 for ele in a] # this is 8-bit track, b is now normalized on [-1,1)
@@ -41,8 +40,6 @@ def readWavFile(filename):
 
     c = fft(b) # calculate fourier transform (complex numbers list)
     plotWaveFile(c) #plot the result of the frequency transform
-
-
 
 def fft(x):
     N = len(x)
@@ -53,5 +50,18 @@ def fft(x):
     return [even[k] + T[k] for k in range(N//2)] + \
            [even[k] - T[k] for k in range(N//2)]
 
-readWavFile('family.wav')
+def plotSoundFile(filename):
+    input_data = wavfile.read(filename)
+    audio = input_data[1]
+    # plot the first 1024 samples
+    plt.plot(audio[0:1024])
+    # label the axes
+    plt.ylabel("Amplitude")
+    plt.xlabel("Time")
+    # set the title
+    plt.title("Sample Wav")
+    # display the plot
+    plt.show()
 
+filename = 'america.wav'
+readWavFile(filename)
