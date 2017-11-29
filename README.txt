@@ -16,4 +16,5 @@ https://dsp.stackexchange.com/questions/741/why-should-i-zero-pad-a-signal-befor
 example reading wav file and plotting:
 https://stackoverflow.com/questions/23377665/python-scipy-fft-wav-files
 
-
+realtime animation plotting:
+https://www.swharden.com/wp/2016-07-19-realtime-audio-visualization-in-python/
