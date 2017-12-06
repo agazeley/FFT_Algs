@@ -18,6 +18,7 @@ https://stackoverflow.com/questions/23377665/python-scipy-fft-wav-files
 
 realtime animation plotting:
 https://www.swharden.com/wp/2016-07-19-realtime-audio-visualization-in-python/
+https://www.swharden.com/wp/2013-05-09-realtime-fft-audio-visualization-with-python/
 
 making gifs of graphs!
 http://zulko.github.io/blog/2014/11/29/data-animations-with-python-and-moviepy/
