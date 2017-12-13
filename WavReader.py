@@ -8,6 +8,13 @@ import numpy as np
 def shift_bit_length(x):
     return 1<<(x-1).bit_length()
 
+
+#zeroPadding:
+#https://stackoverflow.com/questions/34625626/zero-padding-data-until-its-length-is-equal-to-a-power-of-2
+
+#explanation of zero padding:
+#https://dsp.stackexchange.com/questions/741/why-should-i-zero-pad-a-signal-before-taking-the-fourier-transform
+
 def padpad(data, iterations = 1): #This function is used when the array of data read in from the wav file isn't a power
     narray = data                 # of 2. It zero pads the array in the front and back - this doesn't impact the analysis
     for i in range(iterations):
@@ -29,6 +36,10 @@ def plotWaveFile(array_of_data):
 
     plt.plot(np.abs(array_of_data[:(d - 1)]), 'r') #goes through each abs value of the frequencies and plots them
     plt.show()
+    
+    
+    #example reading wav file and plotting:
+    #https://stackoverflow.com/questions/23377665/python-scipy-fft-wav-files
 
 def readWavFile(filename):
     plotSoundFile(filename)
@@ -41,6 +52,10 @@ def readWavFile(filename):
     c = fft(b) # calculate fourier transform (complex numbers list)
     plotWaveFile(c) #plot the result of the frequency transform
 
+    
+    
+    #fft c++ and python implementation: 
+    #https://rosettacode.org/wiki/Fast_Fourier_transform#C.2B.2B
 def fft(x):
     N = len(x)
     if N <= 1: return x #divide and conquer algorithm of the FFT
